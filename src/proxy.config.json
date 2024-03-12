@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 {
     "/api/*":{
         "target": "http://localhost:8787/",
         "secure": false
     }
 }
-=======
-{
-    "/api/*":{
-        "target": "http://localhost:8787/",
-        "secure": false
-    }
-}
->>>>>>> 3dba4be4813da7481605fd1bcdeba668f94b0735

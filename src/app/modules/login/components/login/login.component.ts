@@ -48,6 +48,7 @@ export class LoginComponent {
         } else {
           console.error('An unexpected error occurred:', error.error);
         }
+        
         this._router.navigate(["/connection/register"]);
       });
   }
