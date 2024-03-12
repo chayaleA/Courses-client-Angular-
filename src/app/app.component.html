@@ -1,0 +1,79 @@
+<mat-toolbar>
+  <span>GeeksForGeeksCourses/></span>
+  <a routerLink="/home" routerLinkActive="active"><b>Home Page</b></a>
+  <a routerLink="/allCourses" routerLinkActive="active"><b>All Courses</b></a>
+  <a routerLink="/addCourse" routerLinkActive="active"><b>Add Course</b></a>
+  <a routerLink="/connection/login" routerLinkActive="active"><b>Connect</b></a>
+  <a (click)="logout()" routerLink="/logout" routerLinkActive="active" *ngIf="connect()"><b>Logout</b></a>
+  <span class="spacer"></span>
+  <p *ngIf="connect()" style="color: blue;">Hello to: {{name}}</p>
+</mat-toolbar>
+<br>
+<br>
+<br>
+<br>
+<router-outlet></router-outlet>
+
+<footer id="eight">
+
+  <div class="footer__container">
+    <div class="dog__care ">
+      <span href="#"><i class="fas fa-paw "></i>
+        GeeksForGeeksCourses/>
+      </span>
+      <p>Duis imperdiet sapien tortor, vitae congue diam auctor vitae. Aliquam eget turpis ornare, euismod
+        ligul
+        aeget, enenatis dui.</p>
+    </div>
+    <div class="dog__categories">
+      <h3>CATEGORIES</h3>
+      <div class="categories">
+        <ul>
+          <li> <a routerLink="/home" routerLinkActive="active">> Home Page</a></li>
+          <li> <a routerLink="/allCourses" routerLinkActive="active">> All Courses</a></li>
+          <li> <a routerLink="/addCourse" routerLinkActive="active">> Add Course</a></li>
+          <li> <a routerLink="/connection/login" routerLinkActive="active">> Connect</a></li>
+          <li> <a (click)="logout()" routerLink="/logout" routerLinkActive="active" *ngIf="connect()">> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="newsletter">
+      <h3>NEWSLETTER</h3>
+      <h3>SUBSCRIBE HERE NOW</h3>
+      <span>
+        <input type="text" placeholder="Email Address" #emailInput (keyup.enter)="sendEmail(emailInput.value)"><button
+          class="btn"><i class="far fa-paper-plane"></i></button>
+      </span>
+      <p>Subscribe to our mailing list and get updates to your email inbox.</p>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+
+    <p>&#169; 2024 GeeksForGeeksCourses/>. All Rights Reserved | WordPress Theme by <strong>ChayaA.</strong> </p>
+
+    <div class="share">
+      <div><i class="fab fa-facebook-f"></i></div>
+      <div><i class="fab fa-linkedin-in"></i></div>
+      <div><i class="fab fa-twitter"></i></div>
+      <div><i class="fab fa-google-plus-g"></i></div>
+      <div><i class="fab fa-github"></i></div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script src="jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+  let x = document.querySelector(" .night")
+  x.addEventListener('click', () => {
+    let y = document.querySelectorAll('.goblack')
+    for (let i = 0; i < y.length; i += 1) {
+      y.item(i).classList.toggle("dark-mode");
+    }
+  })
+</script>
