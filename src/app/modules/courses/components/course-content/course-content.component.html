@@ -1,0 +1,22 @@
+<div>
+    
+</div>
+<h2>My videos</h2>
+
+<ng-container *ngIf="noCourses()">
+    <img src="https://img.freepik.com/premium-vector/curiosity-search-concept-illustration_86047-678.jpg?w=826"
+        class="image">
+</ng-container>
+
+<div *ngIf="!noCourses()">
+    <div style="text-align: center;" *ngFor="let video of courseVideos">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xgzXF_RCeV4" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+</div>
+<div class="sticky-button" *ngIf="myCourse()">
+    <button (click)="handleClick()">
+        🖊️
+    </button>
+</div>

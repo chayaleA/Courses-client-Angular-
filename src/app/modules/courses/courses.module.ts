@@ -22,12 +22,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { DialogContentComponent } from './components/dialog-content/dialog-content.component';
 import { LearningModeIconPipe } from './components/learning-mode-icon.pipe';
+import { CourseContentComponent } from './components/course-content/course-content.component';
 
 
 @NgModule({
-    declarations: [AddCourseComponent, AllCoursesComponent, CourseDetailsComponent, EditCourseComponent, HomeComponent, HomeComponent, PageNotFoundComponent, DialogContentComponent, LearningModeIconPipe],
+    declarations: [AddCourseComponent, AllCoursesComponent, CourseDetailsComponent, EditCourseComponent, HomeComponent, HomeComponent, PageNotFoundComponent, LearningModeIconPipe, CourseContentComponent],
     imports: [MatFormFieldModule, HttpClientModule, CommonModule, MatCardModule,
         MatButtonModule, MatGridListModule,
         ReactiveFormsModule, FormsModule, BrowserAnimationsModule, RouterLink,

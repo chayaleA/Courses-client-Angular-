@@ -4,6 +4,9 @@
   align-items: flex-start;
 }
 
+.delete-button:hover {
+  background-color: transparent;
+}
 form {
   width: 1800px;
   margin: 10px auto;
@@ -62,9 +65,10 @@ form {
 
 .container {
   background-position: right center;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   display: flex;
+  background-attachment: fixed;
   justify-content: flex-start;
   /* Align items to the start of the container */
   align-items: center;

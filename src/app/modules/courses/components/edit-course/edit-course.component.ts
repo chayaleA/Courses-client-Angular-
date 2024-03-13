@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category.model';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Course, WayLearning } from '../../models/course.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
@@ -28,7 +28,7 @@ export class EditCourseComponent implements OnInit {
     "kodeKategory": new FormControl('', [Validators.required]),
     "amountLessons": new FormControl('', [Validators.required, Validators.min(1)]),
     "startCourseDate": new FormControl('', [Validators.required]),
-    "syllabusArr": new FormControl('', [Validators.required]),
+    "videosArr": this.fb.array([]), // שימוש ב-FormArray כאן
     "wayLearning": new FormControl('', [Validators.required]),
     "image": new FormControl('', [Validators.required])
   });
@@ -38,17 +38,29 @@ export class EditCourseComponent implements OnInit {
   }
 
   courseToSave: Course;
-
+  addVideo() {
+    const videosArr = this.MyFormGroup.get('videosArr') as FormArray;
+    videosArr.push(this.fb.control(''));
+  }
+  removeVideo(index: number) {
+    const videosArr = this.MyFormGroup.get('videosArr') as FormArray;
+    videosArr.removeAt(index);
+  }
+  videosArr: string[]
   saveCourse() {
+
+    this.videosArr = this.MyFormGroup.value['videosArr'].filter(video => video.trim() !== '');
+
     this.categories.forEach(category => {
       if (category.name == this.MyFormGroup.value["kodeKategory"])
         this.MyFormGroup.value["kodeKategory"] = category._id;
     })
 
+
     this.courseToSave = new Course(this.MyFormGroup.value["nameCourse"],
       this.MyFormGroup.value["kodeKategory"], this.MyFormGroup.value["amountLessons"],
-      this.MyFormGroup.value["startCourseDate"], this.MyFormGroup.
-        value["syllabusArr"], this.convertStringToWayLearning(this.MyFormGroup.value["wayLearning"]),
+      this.MyFormGroup.value["startCourseDate"],
+      this.videosArr, this.convertStringToWayLearning(this.MyFormGroup.value["wayLearning"]),
       this.lecturer._id, this.MyFormGroup.value["image"]);
 
     this._courseService.updateCourse(this.courseToSave, this.courseId).subscribe();
@@ -69,7 +81,8 @@ export class EditCourseComponent implements OnInit {
     private _courseService: CoursesService,
     private _categoryService: CategoriesService,
     private _accr: ActivatedRoute,
-    private _lecturerService: LecturersService
+    private _lecturerService: LecturersService,
+    private fb: FormBuilder
   ) {
     this._categoryService.getAllCategories().subscribe(res => {
       this.categories = res;
@@ -95,9 +108,14 @@ export class EditCourseComponent implements OnInit {
             "kodeKategory": this._currentCourse.kodeKategory,
             "amountLessons": this._currentCourse.amountLessons,
             "startCourseDate": this._currentCourse.startCourseDate,
-            "syllabusArr": this._currentCourse.syllabusArr,
+            // "videosArr": this.fb.array(this._currentCourse.videosArr.map(video => this.fb.control(video))),
             "wayLearning": this.getwayLearning(),
             "image": this._currentCourse.image
+          });
+
+          const videosArr = this.MyFormGroup.get('videosArr') as FormArray;
+          this._currentCourse.videosArr.forEach(video => {
+            videosArr.push(this.fb.control(video));
           });
         })
       }

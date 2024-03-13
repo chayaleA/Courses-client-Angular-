@@ -1,0 +1,33 @@
+
+.image{
+    margin-left: 35%;
+    margin-bottom: 0;
+    width: 30%;
+}
+
+h2{
+    margin-top: 1%;
+    margin-left: 46%;
+    font-size: x-large;
+}
+.sticky-button {
+    position: fixed;
+    bottom: 20px; /* עם מיקום מדוייק על פי הדרישות שלך */
+    right: 20px; /* עם מיקום מדוייק על פי הדרישות שלך */
+  }
+  
+  .sticky-button button {
+    width: 50px; /* עם רוחב מדוייק על פי הדרישות שלך */
+    height: 50px; /* עם גובה מדוייק על פי הדרישות שלך */
+    border-radius: 50%;
+    background-color: #007bff; /* עם צבע רקע מדוייק על פי הדרישות שלך */
+    color: white; /* עם צבע טקסט מדוייק על פי הדרישות שלך */
+    font-size: 24px; /* עם גודל גופן מדוייק על פי הדרישות שלך */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* או עם הצללה מדוייקת על פי הדרישות שלך */
+  }
+  
+  .sticky-button button:hover {
+    background-color: #0056b3; /* עם צבע רקע לכאשר העכבר עובר מעל הכפתור */
+  }

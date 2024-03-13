@@ -19,8 +19,7 @@ export class AuthGuardService implements CanActivate {
                 timer: 1500
               });
             this._router.navigate(['/connection/login'])
-            return false;
-            
+            return false;  
         }
         return true;
     }

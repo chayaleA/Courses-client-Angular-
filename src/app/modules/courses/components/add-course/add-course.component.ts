@@ -23,12 +23,23 @@ export class AddCourseComponent implements OnInit {
     "kodeKategory": new FormControl("", [Validators.required]),
     "amountLessons": new FormControl("", [Validators.required, Validators.min(1)]),
     "startCourseDate": new FormControl("", [Validators.required]),
-    "syllabusArr": new FormControl("", [Validators.required]),
+    "videosArr": this.fb.array([]),
     "wayLearning": new FormControl("", [Validators.required]),
     "image": new FormControl("", [Validators.required])
   })
+  addVideo() {
+    const videosArr = this.MyFromGroup.get('videosArr') as FormArray;
+    videosArr.push(this.fb.control(''));
+  }
+  removeVideo(index: number) {
+    const videosArr = this.MyFromGroup.get('videosArr') as FormArray;
+    videosArr.removeAt(index);
+  }
 
+  videosArr: string[]
   saveCourse() {
+    this.videosArr = this.MyFromGroup.value['videosArr'].filter(video => video.trim() !== '');
+
     this.categories.forEach(category => {
       if (category.name == this.MyFromGroup.value["kodeKategory"])
         this.MyFromGroup.value["kodeKategory"] = category._id;
@@ -36,8 +47,7 @@ export class AddCourseComponent implements OnInit {
 
     this.courseToSave = new Course(this.MyFromGroup.value["nameCourse"],
       this.MyFromGroup.value["kodeKategory"], this.MyFromGroup.value["amountLessons"],
-      this.MyFromGroup.value["startCourseDate"], this.MyFromGroup.
-        value["syllabusArr"], this.convertStringToWayLearning(this.MyFromGroup.value["wayLearning"]),
+      this.MyFromGroup.value["startCourseDate"], this.videosArr, this.convertStringToWayLearning(this.MyFromGroup.value["wayLearning"]),
       this.lecturer._id, this.MyFromGroup.value["image"]);
 
     this._courseService.addCourse(this.courseToSave).subscribe(res => {
@@ -59,7 +69,7 @@ export class AddCourseComponent implements OnInit {
     return WayLearning[value.toLowerCase() as keyof typeof WayLearning];
   }
 
-  constructor(private _router: Router, private _courseService: CoursesService,
+  constructor(private _router: Router, private _courseService: CoursesService,private fb: FormBuilder,
     private _categoryService: CategoriesService, private _lecturerService: LecturersService, private formBuilder: FormBuilder
   ) { }
 

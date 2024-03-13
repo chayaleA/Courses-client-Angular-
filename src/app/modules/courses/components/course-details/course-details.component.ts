@@ -5,8 +5,6 @@ import { Category } from '../../models/category.model';
 import { Router } from '@angular/router';
 import { LecturersService } from '../../services/lecturers.service';
 import { Lecturer } from '../../models/lecturer.model';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-course-details',
@@ -22,7 +20,7 @@ export class CourseDetailsComponent implements OnInit {
 
   courseLecturer: Lecturer;
 
-  constructor(public dialog: MatDialog,private _categoryService: CategoriesService,
+  constructor(private _categoryService: CategoriesService,
      private _router: Router, private _lecturersService: LecturersService) {
 
   }
@@ -52,13 +50,7 @@ export class CourseDetailsComponent implements OnInit {
     })
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentComponent, {
-      data: { syllabus: this.courseToShow.syllabusArr }
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  courseContent() {
+    this._router.navigate(['/courseContent/' + this.courseToShow._id]);
   }
 }

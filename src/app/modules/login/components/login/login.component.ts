@@ -25,6 +25,17 @@ export class LoginComponent {
   }
 
   checkUser(): void {
+    if (!this.username || !this.password) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Please fill in all fields!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      return;
+    }
+  
     this._userService.loginUser(this.username, this.password).subscribe(
       response => {
         sessionStorage.setItem('username', this.username);
@@ -48,11 +59,7 @@ export class LoginComponent {
         } else {
           console.error('An unexpected error occurred:', error.error);
         }
-        
         this._router.navigate(["/connection/register"]);
       });
-  }
-  yourFunction() {
-    alert("bana")
   }
 }

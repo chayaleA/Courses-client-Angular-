@@ -25,11 +25,6 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Enter syllabus</mat-label>
-            <input matInput formControlName="syllabusArr">
-        </mat-form-field>
-
-        <mat-form-field>
             <mat-label>Select way of learning</mat-label>
             <mat-select formControlName="wayLearning">
                 <mat-option value="Zoom">zoom</mat-option>
@@ -43,6 +38,18 @@
             <img [src]="MyFormGroup.controls['image'].value" *ngIf="MyFormGroup.controls['image'].value"
                 style="max-width: 100px; max-height: 100px;">
         </mat-form-field>
+
+        <ng-container *ngFor="let videoCtrl of MyFormGroup.get('videosArr')['controls']; let i = index">
+            <mat-form-field>
+                <mat-label>Enter video {{ i + 1 }}</mat-label>
+                <input matInput [formControl]="videoCtrl">
+                <button class="delete-button" mat-button style="font-size: 12px; width: 1%; height: auto;
+                margin-left: 90%; padding: 8px;" (click)="removeVideo(i)">X</button>
+            </mat-form-field>
+        </ng-container>
+
+        <button type="button" class="btn btn-primary" (click)="addVideo()" style="background-color: grey; border-color: black;">Add Video</button>
+
         <button class="btn btn-danger" type="submit">Save course</button>
     </form>
-  </div>
+</div>

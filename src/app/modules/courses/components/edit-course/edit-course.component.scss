@@ -57,15 +57,15 @@
   
   .container {
     background-position: right center;
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
     display: flex;
+    background-attachment: fixed;
     justify-content: flex-start;
     align-items: center;
     background-image: linear-gradient(75deg, rgb(6 6 6 / 64%) 8%, transparent),
       url("https://img.freepik.com/free-vector/exams-concept-illustration_114360-2173.jpg?w=740&t=st=1710168044~exp=1710168644~hmac=5984756b5fd9540e34d29edffa33820dc70fd454c33b4a20f30e9abd4bf7c6ee");
   }
-  
   .container img {
     width: 50%;
   }
