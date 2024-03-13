@@ -6,28 +6,29 @@
 }
 
 h2{
-    margin-top: 1%;
+    margin-top: 3%;
     margin-left: 46%;
     font-size: x-large;
+    color: blue;
 }
 .sticky-button {
     position: fixed;
-    bottom: 20px; /* עם מיקום מדוייק על פי הדרישות שלך */
-    right: 20px; /* עם מיקום מדוייק על פי הדרישות שלך */
+    bottom: 20px;
+    right: 20px;
   }
   
   .sticky-button button {
-    width: 50px; /* עם רוחב מדוייק על פי הדרישות שלך */
-    height: 50px; /* עם גובה מדוייק על פי הדרישות שלך */
+    width: 50px; 
+    height: 50px;
     border-radius: 50%;
-    background-color: #007bff; /* עם צבע רקע מדוייק על פי הדרישות שלך */
-    color: white; /* עם צבע טקסט מדוייק על פי הדרישות שלך */
-    font-size: 24px; /* עם גודל גופן מדוייק על פי הדרישות שלך */
+    background-color: #007bff;
+    color: white;
+    font-size: 24px;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* או עם הצללה מדוייקת על פי הדרישות שלך */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .sticky-button button:hover {
-    background-color: #0056b3; /* עם צבע רקע לכאשר העכבר עובר מעל הכפתור */
+    background-color: #0056b3;
   }
